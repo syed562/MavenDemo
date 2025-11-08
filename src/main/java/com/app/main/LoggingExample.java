@@ -1,31 +1,27 @@
 package com.app.main;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import java.util.logging.LogManager;
-import java.util.logging.Logger;
 
 public class LoggingExample {
-    private static final Logger logger = LogManager.getLogger(LoggingExample.class);
+private static final Logger logger = LogManager.getLogger(LoggingExample.class);
+public static void main(String[] args) {
+    logger.info("Application started");
 
-    public static void main(String[] args) {
-        // Existing logs
-        logger.info("Application started");
+    logger.debug("This is a debug message");
+    logger.warn("This is a warning message1");
+    logger.warn("This is a warning message2");
+    logger.warn("This is a warning message3");
+    logger.warn("This is a warning message4");
+    logger.warn("This is a warning message5");
+    logger.error("This is an error message6");
 
-        // Add new logs
-        logger.debug("This is a debug message");
+    try {
+        int result = 10 / 0; // Will throw exception
+    } catch (ArithmeticException e) {
+        logger.error("Caught an exception while dividing", e);
+    }
 
-        logger.warn("This is a warning message1");
-        logger.warn("This is a warning message2");
-        logger.warn("This is a warning message3");
-        logger.warn("This is a warning message4");
-        logger.warn("This is a warning message5");
-        logger.error("This is an error message6");
-
-        try {
-            int result = 10 / 0; // Will throw exception
-        } catch (ArithmeticException e) {
-            logger.error("Caught an exception while dividing", e);
-        }
-
-        logger.info("Application finished");
-    }
+    logger.info("Application finished");
+}
 }
